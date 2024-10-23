@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build-backend",
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-g",
+          "${workspaceFolder}/backend/src/main.cpp",               // Main backend source file
+          "-o",
+          "${workspaceFolder}/build/ParentalControlApp.exe",       // Output executable in the 'build' directory
+          "-I${workspaceFolder}/backend/include",                  // Include directory for headers
+          "-LC:/path/to/your/boost/lib",                           // Link path for Boost libraries (if using Boost)
+          "-lboost_system",                                        // Example Boost library to link against
+          "-lboost_filesystem"                                     // Additional Boost library, as needed
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": ["$gcc"],
+        "detail": "Compile the backend application with MinGW and link Boost libraries if required"
+      }
+    ]
+  }
+  
