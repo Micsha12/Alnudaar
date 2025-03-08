@@ -1,0 +1,16 @@
+namespace Alnudaar2.Server.Models
+{
+    public class ScreenTimeSchedule
+    {
+        public int ScheduleID { get; set; }
+        public int UserID { get; set; }
+        public int DeviceID { get; set; }
+        public string? StartTime { get; set; }
+        public string? EndTime { get; set; }
+        public string? DayOfWeek { get; set; }
+
+        // Navigation properties
+        public User? User { get; set; }
+        public Device? Device { get; set; }
+    }
+}
