@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alnudaar2.Server", "Alnudaar2.Server\Alnudaar2.Server.csproj", "{630368B4-C20F-4783-A33B-37707E504086}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "alnudaar2.client", "alnudaar2.client\alnudaar2.client.esproj", "{35477191-5CE9-400E-9C29-ED60F6D05420}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{630368B4-C20F-4783-A33B-37707E504086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{630368B4-C20F-4783-A33B-37707E504086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{630368B4-C20F-4783-A33B-37707E504086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{630368B4-C20F-4783-A33B-37707E504086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35477191-5CE9-400E-9C29-ED60F6D05420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35477191-5CE9-400E-9C29-ED60F6D05420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35477191-5CE9-400E-9C29-ED60F6D05420}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{35477191-5CE9-400E-9C29-ED60F6D05420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35477191-5CE9-400E-9C29-ED60F6D05420}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35477191-5CE9-400E-9C29-ED60F6D05420}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85A776AA-5ECA-4967-8ADC-E76FE827937B}
+	EndGlobalSection
+EndGlobal
