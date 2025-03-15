@@ -15,10 +15,10 @@ namespace Alnudaar2.Server.Controllers
             _screenTimeScheduleService = screenTimeScheduleService;
         }
 
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<IEnumerable<ScreenTimeSchedule>>> GetScreenTimeSchedules(int userId)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ScreenTimeSchedule>>> GetScreenTimeSchedules()
         {
-            var schedules = await _screenTimeScheduleService.GetScreenTimeSchedulesAsync(userId);
+            var schedules = await _screenTimeScheduleService.GetScreenTimeSchedulesAsync();
             return Ok(schedules);
         }
 
@@ -26,13 +26,13 @@ namespace Alnudaar2.Server.Controllers
         public async Task<ActionResult<ScreenTimeSchedule>> CreateScreenTimeSchedule(ScreenTimeSchedule schedule)
         {
             var createdSchedule = await _screenTimeScheduleService.CreateScreenTimeScheduleAsync(schedule);
-            return CreatedAtAction(nameof(GetScreenTimeSchedules), new { userId = createdSchedule.UserID }, createdSchedule);
+            return CreatedAtAction(nameof(GetScreenTimeSchedules), new { id = createdSchedule.ScreenTimeScheduleID }, createdSchedule);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateScreenTimeSchedule(int id, ScreenTimeSchedule schedule)
         {
-            if (id != schedule.ScheduleID)
+            if (id != schedule.ScreenTimeScheduleID)
             {
                 return BadRequest();
             }

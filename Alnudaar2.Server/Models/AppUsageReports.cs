@@ -2,12 +2,12 @@ namespace Alnudaar2.Server.Models
 {
     public class AppUsageReport
     {
-        public int ReportID { get; set; }
+        public int AppUsageReportID { get; set; } // Primary key
         public int UserID { get; set; }
         public int DeviceID { get; set; }
+        public DateTime Timestamp { get; set; }
         public string? AppName { get; set; }
-        public int UsageDuration { get; set; }
-        public string? ReportDate { get; set; }
+        public TimeSpan UsageDuration { get; set; }
 
         // Navigation properties
         public User? User { get; set; }

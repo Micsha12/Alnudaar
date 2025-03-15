@@ -47,7 +47,7 @@ namespace Alnudaar2.Server.Data
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Devices)
-                .WithOne()
+                .WithOne(d => d.User)
                 .HasForeignKey(d => d.UserID);
 
             modelBuilder.Entity<Device>()

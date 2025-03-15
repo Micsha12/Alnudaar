@@ -2,7 +2,7 @@ namespace Alnudaar2.Server.Models
 {
     public class ScreenTimeSchedule
     {
-        public int ScheduleID { get; set; }
+        public int ScreenTimeScheduleID { get; set; }
         public int UserID { get; set; }
         public int DeviceID { get; set; }
         public string? StartTime { get; set; }

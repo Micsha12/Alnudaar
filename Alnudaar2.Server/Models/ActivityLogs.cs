@@ -2,12 +2,11 @@ namespace Alnudaar2.Server.Models
 {
     public class ActivityLog
     {
-        public int LogID { get; set; }
+        public int ActivityLogID { get; set; } // Primary key
         public int UserID { get; set; }
         public int DeviceID { get; set; }
-        public string? ActivityType { get; set; }
-        public DateTime ActivityTime { get; set; }
-        public string? Details { get; set; }
+        public DateTime Timestamp { get; set; }
+        public string? Activity { get; set; }
 
         // Navigation properties
         public User? User { get; set; }
