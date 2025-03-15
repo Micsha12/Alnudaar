@@ -2,6 +2,7 @@ using Alnudaar2.Server.Models;
 using Alnudaar2.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using BCrypt.Net;
 
 namespace Alnudaar2.Server.Services
 {
@@ -27,6 +28,7 @@ namespace Alnudaar2.Server.Services
             try
             {
                 _logger.LogInformation("Registering user: {Username}", user.Username);
+                user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password); // Hash the plain text password
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("User registered successfully: {Username}", user.Username);
@@ -44,7 +46,7 @@ namespace Alnudaar2.Server.Services
             try
             {
                 var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == userLoginDto.Username);
-                if (user == null || user.PasswordHash != userLoginDto.Password)
+                if (user == null || !BCrypt.Net.BCrypt.Verify(userLoginDto.Password, user.PasswordHash)) // Verify the hashed password
                 {
                     _logger.LogWarning("Invalid login attempt for username: {Username}", userLoginDto.Username);
                     throw new UnauthorizedAccessException("Invalid username or password.");

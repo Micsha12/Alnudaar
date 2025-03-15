@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Alnudaar2.Server.Models
 {
@@ -9,6 +10,9 @@ namespace Alnudaar2.Server.Models
         public string? PasswordHash { get; set; }
         public string? UserType { get; set; }
         public string? Email { get; set; }
+
+        [NotMapped]
+        public string? Password { get; set; } // Plain text password, not mapped to the database
 
         // Navigation properties
         public ICollection<Geofencing>? Geofences { get; set; }
