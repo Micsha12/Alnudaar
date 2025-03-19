@@ -1,11 +1,87 @@
-﻿#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-left h1 {
+    margin: 0;
+    font-size: medium   ;
+}
+
+.navbar-left ul,
+.navbar-right ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-left ul li,
+.navbar-right ul li {
+    margin: 0 10px;
+}
+
+.navbar-left ul li a,
+.navbar-right ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-left ul li a:hover,
+.navbar-right ul li a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    padding: 80px 20px 20px; /* Add padding to avoid content being hidden behind the navbar */
+}
+
+/* Feature Boxes */
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between boxes */
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.feature-box {
+    width: 200px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e1e1e;
+    border: 1px solid #555;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
     text-align: center;
 }
 
-th, td {
-    padding-left: 1rem;
-    padding-right: 1rem;
+/* Hover Effect */
+.feature-box:hover {
+    transform: scale(1.1); /* Slightly enlarge the box */
+    background-color: #333; /* Change background color */
+    border-color: #00bcd4; /* Add a pop of color */
 }

@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import './Login.css';
+import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [credentials, setCredentials] = useState({
         username: '',
         password: ''
     });
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -21,15 +26,16 @@ function Login() {
             body: JSON.stringify(credentials)
         });
         if (response.ok) {
-            // Handle successful login (e.g., redirect to dashboard)
-            console.log('Login successful');
+            const user = await response.json();
+            login(user);
+            navigate('/schedules'); // Redirect to schedules page after login
         } else {
             console.error('Failed to login');
         }
     };
 
     return (
-        <div>
+        <div className="login-container">
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <div>
