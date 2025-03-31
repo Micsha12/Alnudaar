@@ -1,0 +1,100 @@
+/* Container for the block rules page */
+.block-rules-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Page title */
+.block-rules-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #4CAF50;
+}
+
+/* Add rule section */
+.add-rule {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.add-rule select,
+.add-rule input {
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    width: 200px;
+    box-sizing: border-box;
+}
+
+.add-rule select:focus,
+.add-rule input:focus {
+    border-color: #4CAF50;
+}
+
+.add-rule button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-rule button:hover {
+    background-color: #45a049;
+}
+
+/* List of rules */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #333;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+ul li span {
+    flex: 1;
+    color: white;
+    font-size: 14px;
+}
+
+ul li button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f44336;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+ul li button:hover {
+    background-color: #d32f2f;
+}

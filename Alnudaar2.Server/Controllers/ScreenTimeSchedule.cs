@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Alnudaar2.Server.Models;
 using Alnudaar2.Server.Services;
+using Alnudaar2.Server.Data; // Ensure this is the correct namespace for ApplicationDbContext
+using Microsoft.EntityFrameworkCore;
 
 namespace Alnudaar2.Server.Controllers
 {
@@ -9,11 +11,13 @@ namespace Alnudaar2.Server.Controllers
     public class ScreenTimeScheduleController : ControllerBase
     {
         private readonly IScreenTimeScheduleService _screenTimeScheduleService;
-
-        public ScreenTimeScheduleController(IScreenTimeScheduleService screenTimeScheduleService)
+        private readonly ApplicationDbContext _context;
+        public ScreenTimeScheduleController(IScreenTimeScheduleService screenTimeScheduleService, ApplicationDbContext context)
         {
             _screenTimeScheduleService = screenTimeScheduleService;
+            _context = context;
         }
+        
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ScreenTimeSchedule>>> GetScreenTimeSchedules()
@@ -23,12 +27,58 @@ namespace Alnudaar2.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ScreenTimeSchedule>> CreateScreenTimeSchedule(ScreenTimeSchedule schedule)
+        public async Task<ActionResult<ScreenTimeSchedule>> CreateOrUpdateScreenTimeSchedule([FromBody] ScreenTimeSchedule schedule)
         {
-            var createdSchedule = await _screenTimeScheduleService.CreateScreenTimeScheduleAsync(schedule);
-            return CreatedAtAction(nameof(GetScreenTimeSchedules), new { id = createdSchedule.ScreenTimeScheduleID }, createdSchedule);
-        }
+            if (schedule == null || string.IsNullOrEmpty(schedule.DayOfWeek))
+            {
+                return BadRequest("Invalid schedule data.");
+            }
 
+            // Validate UserID
+            var userExists = await _context.Users.AnyAsync(u => u.UserID == schedule.UserID);
+            if (!userExists)
+            {
+                return BadRequest("Invalid UserID.");
+            }
+
+            // Validate DeviceID (if applicable)
+            if (schedule.DeviceID.HasValue)
+            {
+                var deviceExists = await _context.Devices.AnyAsync(d => d.DeviceID == schedule.DeviceID);
+                if (!deviceExists)
+                {
+                    return BadRequest("Invalid DeviceID.");
+                }
+            }
+
+            try
+            {
+                // Check if a schedule for the given day already exists
+                var existingSchedule = _context.ScreenTimeSchedules
+                    .FirstOrDefault(s => s.DayOfWeek == schedule.DayOfWeek && s.UserID == schedule.UserID);
+
+                if (existingSchedule != null)
+                {
+                    // Update the existing schedule
+                    existingSchedule.StartTime = schedule.StartTime;
+                    existingSchedule.EndTime = schedule.EndTime;
+                    _context.ScreenTimeSchedules.Update(existingSchedule);
+                }
+                else
+                {
+                    // Create a new schedule
+                    _context.ScreenTimeSchedules.Add(schedule);
+                }
+
+                await _context.SaveChangesAsync();
+                return Ok(schedule);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                return StatusCode(500, "An error occurred while processing the request.");
+            }
+        }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateScreenTimeSchedule(int id, ScreenTimeSchedule schedule)
         {

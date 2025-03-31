@@ -17,6 +17,7 @@ namespace Alnudaar2.Server.Data
         public DbSet<AppUsageReport> AppUsageReports { get; set; }
         public DbSet<Geofencing> Geofences { get; set; }
         public DbSet<ScreenTimeSchedule> ScreenTimeSchedules { get; set; }
+        public DbSet<BlockRule> BlockRules { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

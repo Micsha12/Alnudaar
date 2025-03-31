@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Alnudaar2.Server.Models;
 using Alnudaar2.Server.Services;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Alnudaar2.Server.Controllers
 {
@@ -20,6 +22,35 @@ namespace Alnudaar2.Server.Controllers
         {
             var createdDevice = await _deviceService.RegisterDeviceAsync(device);
             return CreatedAtAction(nameof(Register), new { id = createdDevice.DeviceID }, createdDevice);
+        }
+
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<List<Device>>> GetDevicesByUserId(int userId)
+        {
+            var devices = await _deviceService.GetDevicesByUserIdAsync(userId);
+            return Ok(devices);
+        }
+
+        [HttpPut("{deviceId}")]
+        public async Task<ActionResult<Device>> UpdateDeviceName(int deviceId, [FromBody] Device updatedDevice)
+        {
+            var device = await _deviceService.UpdateDeviceNameAsync(deviceId, updatedDevice.Name);
+            if (device == null)
+            {
+                return NotFound();
+            }
+            return Ok(device);
+        }
+
+        [HttpDelete("{deviceId}")]
+        public async Task<ActionResult> DeleteDevice(int deviceId)
+        {
+            var success = await _deviceService.DeleteDeviceAsync(deviceId);
+            if (!success)
+            {
+                return NotFound();
+            }
+            return NoContent();
         }
     }
 }

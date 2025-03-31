@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import './RegisterDevice.css';
+import { useAuth } from './AuthContext';
 
 function RegisterDevice() {
     const [device, setDevice] = useState({
-        userID: '',
-        deviceName: ''
+        name: ''
     });
+    const { auth } = useAuth();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -13,29 +15,28 @@ function RegisterDevice() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('/api/devices/register', {
+        const response = await fetch('https://localhost:7200/api/devices/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(device)
+            body: JSON.stringify({ ...device, userID: auth.user.userID })
         });
         if (response.ok) {
             // Handle successful registration (e.g., redirect to dashboard)
+            console.log('Device registered successfully');
+        } else {
+            console.error('Failed to register device');
         }
     };
 
     return (
-        <div>
+        <div className="register-device-container">
             <h1>Register Device</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>User ID:</label>
-                    <input type="text" name="userID" value={device.userID} onChange={handleInputChange} required />
-                </div>
-                <div>
                     <label>Device Name:</label>
-                    <input type="text" name="deviceName" value={device.deviceName} onChange={handleInputChange} required />
+                    <input type="text" name="name" value={device.name} onChange={handleInputChange} required />
                 </div>
                 <button type="submit">Register Device</button>
             </form>

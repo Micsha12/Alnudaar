@@ -24,7 +24,6 @@ function Register() {
             body: JSON.stringify(user)
         });
         if (response.ok) {
-            // Handle successful registration (e.g., redirect to login page)
             console.log('User registered successfully');
         } else {
             console.error('Failed to register user');
@@ -32,7 +31,7 @@ function Register() {
     };
 
     return (
-        <div>
+        <div className="register-container">
             <h1>Register</h1>
             <form onSubmit={handleSubmit}>
                 <div>
