@@ -108,50 +108,80 @@ function BlockRules() {
     return (
         <div className="block-rules-container">
             <h1>Manage Blocking Rules</h1>
+            
+            {/* Form for Adding or Editing Rules */}
             <div className="add-rule">
-                <select
-                    value={newRule.type}
-                    onChange={(e) => setNewRule({ ...newRule, type: e.target.value })}
-                >
-                    <option value="website">Website</option>
-                    <option value="application">Application</option>
-                </select>
-                <input
-                    type="text"
-                    placeholder="Enter website or application name"
-                    value={newRule.value}
-                    onChange={(e) => setNewRule({ ...newRule, value: e.target.value })}
-                />
-                <input
-                    type="text"
-                    placeholder="Time range (e.g., 09:00-17:00)"
-                    value={newRule.timeRange}
-                    onChange={(e) => setNewRule({ ...newRule, timeRange: e.target.value })}
-                    disabled={newRule.timeRange === '00:00-23:59'} // Disable if "All Day" is checked
-                />
-                <label>
+                <h2>{editingRule ? 'Edit Rule' : 'Add New Rule'}</h2>
+                <div className="form-group">
+                    <label htmlFor="rule-type">Rule Type:</label>
+                    <select
+                        id="rule-type"
+                        value={newRule.type}
+                        onChange={(e) => setNewRule({ ...newRule, type: e.target.value })}
+                    >
+                        <option value="website">Website</option>
+                        <option value="application">Application</option>
+                    </select>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="rule-value">Website or Application:</label>
                     <input
-                        type="checkbox"
-                        checked={newRule.timeRange === '00:00-23:59'}
-                        onChange={handleAllDayToggle}
+                        id="rule-value"
+                        type="text"
+                        placeholder="Enter website or application name"
+                        value={newRule.value}
+                        onChange={(e) => setNewRule({ ...newRule, value: e.target.value })}
                     />
-                    All Day
-                </label>
-                <button onClick={handleAddOrUpdateRule}>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="time-range">Time Range:</label>
+                    <input
+                        id="time-range"
+                        type="text"
+                        placeholder="e.g., 09:00-17:00"
+                        value={newRule.timeRange}
+                        onChange={(e) => setNewRule({ ...newRule, timeRange: e.target.value })}
+                        disabled={newRule.timeRange === '00:00-23:59'} // Disable if "All Day" is checked
+                    />
+                </div>
+                <div className="form-group">
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={newRule.timeRange === '00:00-23:59'}
+                            onChange={handleAllDayToggle}
+                        />
+                        All Day
+                    </label>
+                </div>
+                <button className="submit-button" onClick={handleAddOrUpdateRule}>
                     {editingRule ? 'Update Rule' : 'Add Rule'}
                 </button>
             </div>
-            <ul>
-                {rules.map((rule) => (
-                    <li key={rule.blockRuleID}>
-                        {rule.type === 'website' ? 'Website' : 'Application'}: {rule.value} ({rule.timeRange})
-                        <button onClick={() => handleEditRule(rule)}>Edit</button>
-                        <button onClick={() => handleDeleteRule(rule.blockRuleID)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+    
+            {/* List of Existing Rules */}
+            <div className="rules-list">
+                <h2>Existing Rules</h2>
+                {rules.length > 0 ? (
+                    <ul>
+                        {rules.map((rule) => (
+                            <li key={rule.blockRuleID} className="rule-item">
+                                <span>
+                                    <strong>{rule.type === 'website' ? 'Website' : 'Application'}:</strong> {rule.value} 
+                                    <em> ({rule.timeRange})</em>
+                                </span>
+                                <div className="rule-actions">
+                                    <button onClick={() => handleEditRule(rule)}>Edit</button>
+                                    <button onClick={() => handleDeleteRule(rule.blockRuleID)}>Delete</button>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No rules added yet.</p>
+                )}
+            </div>
         </div>
     );
 }
-
 export default BlockRules;
