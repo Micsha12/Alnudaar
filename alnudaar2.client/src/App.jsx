@@ -17,7 +17,7 @@ function Navbar() {
         <nav className="navbar">
             <div className="navbar-left">
                 <h1>
-                    <Link to="/" className="navbar-brand">Alnudaar2</Link>
+                    <Link to="/" className="navbar-brand">Alnudaar</Link>
                 </h1>
                 <ul>
                     {auth.isAuthenticated && (
@@ -135,7 +135,7 @@ function FeatureBox({ name, route }) {
 function WelcomePage() {
     return (
         <div className="welcome-page">
-            <h1>Welcome to Alnudaar2</h1>
+            <h1>Welcome to Alnudaar</h1>
             <p>Please log in to access the features.</p>
         </div>
     );

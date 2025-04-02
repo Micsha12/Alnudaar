@@ -17,6 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IDeviceService, DeviceService>();
 builder.Services.AddScoped<IScreenTimeScheduleService, ScreenTimeScheduleService>();
+builder.Services.AddScoped<IBlockRulesService, BlockRulesService>();
 
 // Configure CORS
 builder.Services.AddCors(options =>

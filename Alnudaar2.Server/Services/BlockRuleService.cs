@@ -9,6 +9,8 @@ namespace Alnudaar2.Server.Services
         Task<List<BlockRule>> GetBlockRulesByUserIdAsync(int userId);
         Task<BlockRule> CreateBlockRuleAsync(BlockRule rule);
         Task DeleteBlockRuleAsync(int id);
+        Task<BlockRule> GetBlockRuleByIdAsync(int id); // Ensure this exists
+        Task<BlockRule> UpdateBlockRuleAsync(BlockRule updatedRule); // Add this
     }
 
     public class BlockRulesService : IBlockRulesService
@@ -40,6 +42,21 @@ namespace Alnudaar2.Server.Services
                 _context.BlockRules.Remove(rule);
                 await _context.SaveChangesAsync();
             }
+        }
+        public async Task<BlockRule> GetBlockRuleByIdAsync(int id)
+        {
+            var rule = await _context.BlockRules.FindAsync(id);
+            if (rule == null)
+            {
+                throw new KeyNotFoundException($"BlockRule with ID {id} was not found.");
+            }
+            return rule;
+        }
+        public async Task<BlockRule> UpdateBlockRuleAsync(BlockRule updatedRule)
+        {
+            _context.BlockRules.Update(updatedRule);
+            await _context.SaveChangesAsync();
+            return updatedRule;
         }
     }
 }

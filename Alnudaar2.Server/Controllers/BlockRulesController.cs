@@ -35,5 +35,36 @@ namespace Alnudaar2.Server.Controllers
             await _blockRulesService.DeleteBlockRuleAsync(id);
             return NoContent();
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<BlockRule>> UpdateBlockRule(int id, BlockRule updatedRule)
+        {
+            if (id != updatedRule.BlockRuleID)
+            {
+                return BadRequest("Rule ID mismatch");
+            }
+
+            var existingRule = await _blockRulesService.GetBlockRuleByIdAsync(id);
+            if (existingRule == null)
+            {
+                return NotFound();
+            }
+
+            // Ensure the DeviceID is valid (optional validation)
+            if (updatedRule.DeviceID <= 0)
+            {
+                return BadRequest("Invalid DeviceID");
+            }
+
+            // Update the rule
+            existingRule.Type = updatedRule.Type;
+            existingRule.Value = updatedRule.Value;
+            existingRule.TimeRange = updatedRule.TimeRange;
+            existingRule.DeviceID = updatedRule.DeviceID;
+
+            var updated = await _blockRulesService.UpdateBlockRuleAsync(existingRule);
+            return Ok(updated);
+        }
+        
     }
 }
