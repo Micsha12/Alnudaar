@@ -9,6 +9,7 @@ namespace Alnudaar2.Server.Services
     public interface IScreenTimeScheduleService
     {
         Task<IEnumerable<ScreenTimeSchedule>> GetScreenTimeSchedulesAsync();
+        Task<List<ScreenTimeSchedule>> GetScreenTimeSchedulesByDeviceIdAsync(int deviceId);
         Task<ScreenTimeSchedule> GetScreenTimeScheduleByIdAsync(int id);
         Task<ScreenTimeSchedule> CreateScreenTimeScheduleAsync(ScreenTimeSchedule schedule);
         Task UpdateScreenTimeScheduleAsync(ScreenTimeSchedule schedule);
@@ -22,6 +23,11 @@ namespace Alnudaar2.Server.Services
         public ScreenTimeScheduleService(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public async Task<List<ScreenTimeSchedule>> GetScreenTimeSchedulesByDeviceIdAsync(int deviceId)
+        {
+            return await _context.ScreenTimeSchedules.Where(s => s.DeviceID == deviceId).ToListAsync();
         }
 
         public async Task<IEnumerable<ScreenTimeSchedule>> GetScreenTimeSchedulesAsync()

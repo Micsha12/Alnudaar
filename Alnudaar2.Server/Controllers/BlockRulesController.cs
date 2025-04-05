@@ -22,6 +22,18 @@ namespace Alnudaar2.Server.Controllers
             return Ok(rules);
         }
 
+        [HttpGet("devices/{deviceId}")] // New endpoint
+        public async Task<ActionResult<IEnumerable<BlockRule>>> GetBlockRulesByDeviceId(int deviceId)
+        {
+            var rules = await _blockRulesService.GetBlockRulesByDeviceIdAsync(deviceId);
+            if (rules == null || rules.Count == 0)
+            {
+                return NotFound($"No block rules found for DeviceID: {deviceId}");
+            }
+            return Ok(rules);
+        }
+
+
         [HttpPost]
         public async Task<ActionResult<BlockRule>> CreateBlockRule(BlockRule rule)
         {

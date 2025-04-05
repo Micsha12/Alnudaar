@@ -12,6 +12,7 @@ namespace Alnudaar2.Server.Services
         Task<List<Device>> GetDevicesByUserIdAsync(int userId);
         Task<Device> UpdateDeviceNameAsync(int deviceId, string newName);
         Task<bool> DeleteDeviceAsync(int deviceId);
+        Task<Device> GetDeviceByNameAsync(string deviceName);
     }
 
     public class DeviceService : IDeviceService
@@ -56,6 +57,10 @@ namespace Alnudaar2.Server.Services
                 return true;
             }
             return false;
+        }
+        public async Task<Device> GetDeviceByNameAsync(string deviceName)
+        {
+            return await _context.Devices.FirstOrDefaultAsync(d => d.Name == deviceName);
         }
     }
 }

@@ -52,5 +52,15 @@ namespace Alnudaar2.Server.Controllers
             }
             return NoContent();
         }
+        [HttpGet("{deviceName}")]
+        public async Task<ActionResult<Device>> GetDeviceByName(string deviceName)
+        {
+            var device = await _deviceService.GetDeviceByNameAsync(deviceName);
+            if (device == null)
+            {
+                return NotFound(); // Return 404 if the device is not found
+            }
+            return Ok(device); // Return 200 with the device data
+        }
     }
 }

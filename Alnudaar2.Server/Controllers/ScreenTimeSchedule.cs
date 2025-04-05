@@ -26,6 +26,17 @@ namespace Alnudaar2.Server.Controllers
             return Ok(schedules);
         }
 
+        [HttpGet("devices/{deviceId}")]
+        public async Task<ActionResult<IEnumerable<ScreenTimeSchedule>>> GetScreenTimeSchedulesByDeviceId(int deviceId)
+        {
+            var schedules = await _screenTimeScheduleService.GetScreenTimeSchedulesByDeviceIdAsync(deviceId);
+            if (schedules == null || schedules.Count == 0)
+            {
+                return NotFound($"No screen time schedules found for DeviceID: {deviceId}");
+            }
+            return Ok(schedules);
+        }
+
         [HttpPost]
         public async Task<ActionResult<ScreenTimeSchedule>> CreateOrUpdateScreenTimeSchedule([FromBody] ScreenTimeSchedule schedule)
         {

@@ -7,6 +7,7 @@ namespace Alnudaar2.Server.Services
     public interface IBlockRulesService
     {
         Task<List<BlockRule>> GetBlockRulesByUserIdAsync(int userId);
+        Task<List<BlockRule>> GetBlockRulesByDeviceIdAsync(int deviceId); // New method
         Task<BlockRule> CreateBlockRuleAsync(BlockRule rule);
         Task DeleteBlockRuleAsync(int id);
         Task<BlockRule> GetBlockRuleByIdAsync(int id); // Ensure this exists
@@ -25,6 +26,11 @@ namespace Alnudaar2.Server.Services
         public async Task<List<BlockRule>> GetBlockRulesByUserIdAsync(int userId)
         {
             return await _context.BlockRules.Where(r => r.UserID == userId).ToListAsync();
+        }
+
+        public async Task<List<BlockRule>> GetBlockRulesByDeviceIdAsync(int deviceId) // New method
+        {
+            return await _context.BlockRules.Where(r => r.DeviceID == deviceId).ToListAsync();
         }
 
         public async Task<BlockRule> CreateBlockRuleAsync(BlockRule rule)
