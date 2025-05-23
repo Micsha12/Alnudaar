@@ -32,17 +32,20 @@ function ScreenTimeSchedules() {
     const handleInputChange = (day, field, value) => {
         setSchedules((prevSchedules) => {
             const updatedSchedules = [...prevSchedules];
-            const scheduleIndex = updatedSchedules.findIndex((s) => s.dayOfWeek === day);
+            // Find by dayOfWeek AND deviceID
+            const scheduleIndex = updatedSchedules.findIndex(
+                (s) => s.dayOfWeek === day && s.deviceID === selectedDevice.deviceID
+            );
 
             if (scheduleIndex !== -1) {
-                // Update existing schedule
                 updatedSchedules[scheduleIndex][field] = value;
             } else {
-                // Add new schedule for the day
                 updatedSchedules.push({
                     dayOfWeek: day,
                     startTime: field === 'startTime' ? value : '',
                     endTime: field === 'endTime' ? value : '',
+                    deviceID: selectedDevice.deviceID,
+                    userID: user.userID,
                 });
             }
 
@@ -56,7 +59,10 @@ function ScreenTimeSchedules() {
             return;
         }
 
-        const schedule = schedules.find((s) => s.dayOfWeek === day);
+        // Find the schedule for this device and day
+        const schedule = schedules.find(
+            (s) => s.dayOfWeek === day && s.deviceID === selectedDevice.deviceID
+        );
         if (schedule) {
             const payload = {
                 ...schedule,
@@ -80,12 +86,12 @@ function ScreenTimeSchedules() {
         }
         setEditingDay(null);
     };
-
     return (
         <div className="schedules-container">
             <h1>Weekly Screen Time Schedules</h1>
             {daysOfWeek.map((day) => {
-                const schedule = schedules.find((s) => s.dayOfWeek === day) || { startTime: '', endTime: '' };
+                const schedule = schedules.find(
+    (s) => s.dayOfWeek === day && s.deviceID === selectedDevice.deviceID) || { startTime: '', endTime: '' };
 
                 return (
                     <div key={day} className="schedule-row">

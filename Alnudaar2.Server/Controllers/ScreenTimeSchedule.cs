@@ -64,9 +64,12 @@ namespace Alnudaar2.Server.Controllers
 
             try
             {
-                // Check if a schedule for the given day already exists
-                var existingSchedule = _context.ScreenTimeSchedules
-                    .FirstOrDefault(s => s.DayOfWeek == schedule.DayOfWeek && s.UserID == schedule.UserID);
+                // FIX: Check for existing schedule by UserID, DeviceID, and DayOfWeek
+                var existingSchedule = await _context.ScreenTimeSchedules
+                    .FirstOrDefaultAsync(s =>
+                        s.DayOfWeek == schedule.DayOfWeek &&
+                        s.UserID == schedule.UserID &&
+                        s.DeviceID == schedule.DeviceID);
 
                 if (existingSchedule != null)
                 {
