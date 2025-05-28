@@ -32,5 +32,15 @@ namespace Alnudaar2.Server.Controllers
             }
             return Ok(user);
         }
+        [HttpGet("{userId}")]
+        public async Task<ActionResult<User>> GetUserById(int userId)
+        {
+            var user = await _userService.GetUserByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
     }
 }

@@ -10,6 +10,8 @@ namespace Alnudaar2.Server.Services
     {
         Task<User> RegisterUserAsync(User user);
         Task<User> LoginUserAsync(UserLoginDto userLoginDto);
+
+        Task<User> GetUserByIdAsync(int userId);
     }
 
     public class UserService : IUserService
@@ -56,6 +58,20 @@ namespace Alnudaar2.Server.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error logging in user: {Username}", userLoginDto.Username);
+                throw;
+            }
+        }
+
+        public async Task<User> GetUserByIdAsync(int userId)
+        {
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.UserID == userId);
+                return user;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error fetching user by ID: {UserId}", userId);
                 throw;
             }
         }
