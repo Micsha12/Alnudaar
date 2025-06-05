@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, Navigate, useNavigate } f
 import { useAuth } from "./AuthContext";
 import Register from "./Register";
 import Login from "./Login";
+import AppUsageReport from "./AppUsageReport";
 import ScreenTimeSchedules from "./ScreenTimeSchedule";
 import RegisterDevice from "./RegisterDevice";
 import ManageDevices from "./ManageDevices";
@@ -146,9 +147,7 @@ function App() {
     const features = [
         { id: 1, name: "Screen Time Schedules", route: "/schedules" },
         { id: 2, name: "Website & App Blocking", route: "/block-rules" }, // Add BlockRules to features
-        { id: 3, name: "Feature 3 (Future Use)", route: "/feature3" },
-        { id: 4, name: "Feature 4 (Future Use)", route: "/feature4" },
-        { id: 5, name: "Feature 5 (Future Use)", route: "/feature5" },
+        { id: 3, name: "App Usage Report", route: "/appusagereport" },
     ];
 
     return (
@@ -179,7 +178,8 @@ function App() {
                                     }
                                 />
                                 <Route path="/schedules" element={<ScreenTimeSchedules />} />
-                                <Route path="/block-rules" element={<BlockRules />} /> {/* Add BlockRules route */}
+                                <Route path="/block-rules" element={<BlockRules />} />
+                                <Route path="/appusagereport" element={<AppUsageReport />} />
                                 <Route path="/register-device" element={<RegisterDevice />} />
                                 <Route path="/manage-devices" element={<ManageDevices />} />
                                 {/* Add additional authenticated routes here */}

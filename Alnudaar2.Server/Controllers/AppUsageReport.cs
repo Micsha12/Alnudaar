@@ -47,6 +47,29 @@ namespace Alnudaar2.Server.Controllers
             }
         }
 
+        [HttpGet("device/{deviceId}")]
+        public async Task<ActionResult<IEnumerable<AppUsageReport>>> GetReportsByDevice(int deviceId)
+        {
+            var reports = await _context.AppUsageReports
+                .Where(r => r.DeviceID == deviceId)
+                .ToListAsync();
+
+            // Always return a JSON array, even if empty
+            return Ok(reports);
+        }
+
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<IEnumerable<AppUsageReport>>> GetReportsByUser(int userId)
+        {
+            var reports = await _context.AppUsageReports
+                .Where(r => r.UserID == userId)
+                .ToListAsync();
+
+            if (reports == null || reports.Count == 0)
+                return NotFound($"No reports found for user {userId}");
+
+            return Ok(reports);
+        }
         
     }
 }

@@ -1,92 +1,53 @@
-/* General body styling */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-/* Container for the schedules */
-.schedules-container {
-    display: flex;
-    flex-wrap: wrap; /* Arrange rows horizontally and wrap if needed */
-    gap: 20px; /* Space between rows */
-    justify-content: center; /* Center the rows horizontally */
+.app-usage-container {
+    max-width: 1100px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #333;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 90%; /* Adjust width to fit the screen */
-    max-width: 1200px; /* Limit the maximum width */
-}
-
-/* Title styling */
-.schedules-container h1 {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-/* Row container for each day and schedule */
-.schedule-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 150px; /* Fixed width for each day */
-    padding: 10px;
-    border: 1px solid #444;
-    border-radius: 8px;
     background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     color: white;
+    font-family: Arial, sans-serif;
+}
+
+.app-usage-container h1 {
+    color: #4CAF50;
+    margin-bottom: 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Hover effect for each schedule row */
-.schedule-row:hover {
-    transform: scale(1.05); /* Slight zoom effect */
-    background-color: #333;
+.app-usage-message {
+    color: #ccc;
+    text-align: center;
+    margin-top: 20px;
 }
 
-/* Input styling */
-.schedule-row input {
-    margin: 5px 0;
-    padding: 5px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    background-color: #444;
-    color: white;
-    outline: none;
-    width: 100%; /* Full width inside the row */
-    box-sizing: border-box;
+.error-message {
+    color: #f44336;
 }
 
-.schedule-row input:focus {
-    border-color: #4CAF50;
+.app-usage-table-wrapper {
+    overflow-x: auto;
 }
 
-/* Button styling */
-.schedule-row button {
+.app-usage-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #222;
     margin-top: 10px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #4CAF50;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Full width inside the row */
-    box-sizing: border-box;
 }
 
-.schedule-row button:hover {
-    background-color: #45a049;
+.app-usage-table th, .app-usage-table td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #333;
+    text-align: left;
+}
+
+.app-usage-table th {
+    background-color: #333;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.app-usage-table tr:hover {
+    background-color: #444;
 }
