@@ -50,6 +50,13 @@
     text-decoration: underline;
 }
 
+.navbar-brand {
+    font-size: 1.5rem;   /* Try 2rem or adjust as needed */
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
 .main-content {
     padding: 80px 20px 20px; /* Add padding to avoid content being hidden behind the navbar */
 }

@@ -16,8 +16,20 @@ function Login() {
         setCredentials({ ...credentials, [name]: value });
     };
 
+    const [error, setError] = useState('');
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+        if (!credentials.username || !credentials.password) {
+            setError('Please fill in all fields.');
+            return;
+        }
+        // If you use email as username, add email format check:
+        // if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(credentials.username)) {
+        //     setError('Please enter a valid email address.');
+        //     return;
+        // }
         const response = await fetch('https://localhost:7200/api/users/login', {
             method: 'POST',
             headers: {
@@ -28,15 +40,16 @@ function Login() {
         if (response.ok) {
             const user = await response.json();
             login(user);
-            navigate('/schedules'); // Redirect to schedules page after login
+            navigate('/schedules');
         } else {
-            console.error('Failed to login');
+            setError('Failed to login. Please check your credentials.');
         }
     };
 
     return (
         <div className="login-container">
             <h1>Login</h1>
+            {error && <div className="login-error">{error}</div>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Username:</label>
