@@ -67,7 +67,7 @@ body {
     min-width: 160px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     z-index: 1;
-    right: 0; /* Ensure the dropdown menu is aligned to the right */
+    right: 0;
 }
 
 .dropdown-menu li {

@@ -1,6 +1,6 @@
 /* Container for the block rules page */
 .block-rules-container {
-    max-width: 1100px; /* Increased width for better alignment */
+    max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
     background-color: #1e1e1e;
@@ -24,9 +24,9 @@
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
-    justify-content: flex-start; /* Align items to the left */
+    justify-content: flex-start;
     align-items: center;
-    width: 100%; /* Ensure the container spans the full width */
+    width: 100%;
 }
 
 /* Inputs and dropdowns */
@@ -39,7 +39,7 @@
     color: white;
     font-size: 14px;
     outline: none;
-    width: 220px; /* Increased width for better alignment */
+    width: 220px;
     box-sizing: border-box;
 }
 
@@ -50,17 +50,17 @@
 
 /* Label for "All Day" checkbox */
 .add-rule label {
-    margin-bottom: 0; /* Remove extra margin */
-    margin-right: auto; /* Push the button to the right */
+    margin-bottom: 0;
+    margin-right: auto;
     display: flex;
-    align-items: center; /* Vertically align the checkbox and label text */
-    gap: 5px; /* Space between the checkbox and label text */
+    align-items: center;
+    gap: 5px;
 }
 .add-rule input[type="checkbox"] {
-    margin-left: auto; /* Push the checkbox to the right */
+    margin-left: auto;
     display: flex;
-    align-items: center; /* Vertically align the checkbox */
-    gap: 5px; /* Space between the checkbox and label text */
+    align-items: center;
+    gap: 5px;
 }
 
 /* Add/Update button */
@@ -73,7 +73,7 @@
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-left: auto; /* Push the button to the right */
+    margin-left: auto;
 }
 
 .add-rule button:hover {
@@ -146,7 +146,7 @@ ul li button:last-of-type:hover {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
-    width: 100%; /* Full width for better alignment */
+    width: 100%;
 }
 
 .form-group label {
@@ -164,7 +164,7 @@ ul li button:last-of-type:hover {
     color: white;
     font-size: 14px;
     outline: none;
-    width: 100%; /* Full width for inputs */
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -198,7 +198,7 @@ ul li:hover {
 /* Rule actions container */
 .rule-actions {
     display: flex;
-    gap: 10px; /* Space between buttons */
+    gap: 10px;
 }
 
 /* Disabled button styling */

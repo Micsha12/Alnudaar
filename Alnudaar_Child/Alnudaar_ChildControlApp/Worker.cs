@@ -294,7 +294,7 @@ namespace Alnudaar_ChildControlApp
                 r.DeviceID,
                 r.Timestamp,
                 r.AppName,
-                UsageDuration = r.UsageDuration.ToString() // e.g., "00:15:00"
+                UsageDuration = r.UsageDuration.ToString()
             }).ToList();
 
             var json = JsonSerializer.Serialize(payload);
@@ -308,7 +308,6 @@ namespace Alnudaar_ChildControlApp
 
         private int GetUserIdForDevice(int deviceId)
         {
-            // Example: fetch from your local database
             var device = _databaseService.GetDeviceById(deviceId);
             return device?.UserID ?? 0;
         }

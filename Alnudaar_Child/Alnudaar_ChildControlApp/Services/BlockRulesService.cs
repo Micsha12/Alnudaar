@@ -29,7 +29,7 @@ namespace Alnudaar_ChildControlApp.Services
             {
                 var hostsFileContent = File.ReadAllLines(HostsFilePath).ToList();
 
-                // Remove previously blocked websites by this app
+                // Remove previously blocked websites
                 hostsFileContent.RemoveAll(line => line.Contains("# AlnudaarBlock"));
 
                 // Add new blocked websites

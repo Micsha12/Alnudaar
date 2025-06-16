@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Alnudaar2.Server.Models;
 using Alnudaar2.Server.Services;
-using Alnudaar2.Server.Data; // Ensure this is the correct namespace for ApplicationDbContext
+using Alnudaar2.Server.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Alnudaar2.Server.Controllers
@@ -64,7 +64,6 @@ namespace Alnudaar2.Server.Controllers
 
             try
             {
-                // FIX: Check for existing schedule by UserID, DeviceID, and DayOfWeek
                 var existingSchedule = await _context.ScreenTimeSchedules
                     .FirstOrDefaultAsync(s =>
                         s.DayOfWeek == schedule.DayOfWeek &&

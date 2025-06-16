@@ -22,7 +22,7 @@ namespace Alnudaar2.Server.Controllers
             return Ok(rules);
         }
 
-        [HttpGet("devices/{deviceId}")] // New endpoint
+        [HttpGet("devices/{deviceId}")]
         public async Task<ActionResult<IEnumerable<BlockRule>>> GetBlockRulesByDeviceId(int deviceId)
         {
             var rules = await _blockRulesService.GetBlockRulesByDeviceIdAsync(deviceId);
@@ -62,13 +62,12 @@ namespace Alnudaar2.Server.Controllers
                 return NotFound();
             }
 
-            // Ensure the DeviceID is valid (optional validation)
+            // Ensure the DeviceID is valid
             if (updatedRule.DeviceID <= 0)
             {
                 return BadRequest("Invalid DeviceID");
             }
 
-            // Update the rule
             existingRule.Type = updatedRule.Type;
             existingRule.Value = updatedRule.Value;
             existingRule.TimeRange = updatedRule.TimeRange;

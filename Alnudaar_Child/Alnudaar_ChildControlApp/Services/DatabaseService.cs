@@ -111,7 +111,7 @@ namespace Alnudaar_ChildControlApp
 
             using var command = new SqliteCommand(insertQuery, connection);
             command.Parameters.AddWithValue("@deviceID", device.DeviceID);
-            command.Parameters.AddWithValue("@name", device.Name ?? "Unknown"); // Handle null Name
+            command.Parameters.AddWithValue("@name", device.Name ?? "Unknown");
             command.Parameters.AddWithValue("@userID", device.UserID);
 
             command.ExecuteNonQuery();
@@ -307,7 +307,7 @@ namespace Alnudaar_ChildControlApp
 
             using var command = new SqliteCommand(insertQuery, connection);
             command.Parameters.AddWithValue("@deviceID", device.DeviceID);
-            command.Parameters.AddWithValue("@name", device.Name ?? "Unknown"); // Handle null Name
+            command.Parameters.AddWithValue("@name", device.Name ?? "Unknown");
             command.Parameters.AddWithValue("@userID", device.UserID);
 
             command.ExecuteNonQuery();
@@ -459,6 +459,5 @@ namespace Alnudaar_ChildControlApp
             }
             return reports;
         }
-        // Add similar methods for other models like Geofencing, BlockRule, etc.
     }
 }

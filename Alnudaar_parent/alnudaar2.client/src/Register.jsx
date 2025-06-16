@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Add this import
+import { useNavigate } from 'react-router-dom';
 import './Register.css';
 
 function Register() {
@@ -16,7 +16,7 @@ function Register() {
     };
 
     const [error, setError] = useState('');
-    const navigate = useNavigate(); // Add this line
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();

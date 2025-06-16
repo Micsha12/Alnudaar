@@ -25,11 +25,6 @@ function Login() {
             setError('Please fill in all fields.');
             return;
         }
-        // If you use email as username, add email format check:
-        // if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(credentials.username)) {
-        //     setError('Please enter a valid email address.');
-        //     return;
-        // }
         const response = await fetch('https://localhost:7200/api/users/login', {
             method: 'POST',
             headers: {

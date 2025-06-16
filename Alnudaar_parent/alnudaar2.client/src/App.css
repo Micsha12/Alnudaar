@@ -51,14 +51,14 @@
 }
 
 .navbar-brand {
-    font-size: 1.5rem;   /* Try 2rem or adjust as needed */
+    font-size: 1.5rem;
     font-weight: bold;
     color: white;
     text-decoration: none;
 }
 
 .main-content {
-    padding: 80px 20px 20px; /* Add padding to avoid content being hidden behind the navbar */
+    padding: 80px 20px 20px;
 }
 
 /* Features Container */
@@ -93,7 +93,7 @@
 
 /* Hover Effect */
 .feature-box:hover {
-    transform: scale(1.05); /* Slightly enlarge the box */
+    transform: scale(1.05); 
     background-color: #333;
 }
 

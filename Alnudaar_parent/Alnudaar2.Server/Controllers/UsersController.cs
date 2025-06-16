@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Alnudaar2.Server.Models;
 using Alnudaar2.Server.Services;
-using Alnudaar2.Server.Data; // Add this line if ApplicationDbContext is in the Data namespace
+using Alnudaar2.Server.Data;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,7 +53,6 @@ namespace Alnudaar2.Server.Controllers
             }
             catch (DbUpdateException ex)
             {
-                // Handle rare race condition where two requests pass the check at the same time
                 return Conflict("A user with this email or username already exists.");
             }
         }

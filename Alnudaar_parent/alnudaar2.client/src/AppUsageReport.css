@@ -1,22 +1,5 @@
 /* src/AppUsageReport.css */
 
-/* General body styling (if not already globally defined elsewhere, e.g. index.css) */
-/* You might not need this if your App.css or index.css handles it */
-/*
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; 
-    min-height: 100vh;
-    padding-top: 20px; 
-}
-*/
-
 /* Container for the app usage report */
 .app-usage-container {
     display: flex;
@@ -27,7 +10,7 @@ body {
     background-color: #333; /* Dark background for the container */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 90%; /* Adjust width */
+    width: 90%;
     max-width: 1000px; /* Max width for larger screens */
     margin: 20px auto; /* Center container on page */
     color: white; /* Default text color inside container */
@@ -37,7 +20,7 @@ body {
 .app-usage-container h1 {
     width: 100%;
     text-align: center;
-    margin-bottom: 10px; /* Reduced margin as gap is used */
+    margin-bottom: 10px;
     font-size: 24px;
     color: #e0e0e0;
 }
@@ -50,38 +33,37 @@ body {
 }
 
 .error-message {
-    color: #ff6b6b; /* A reddish color for errors */
+    color: #ff6b6b;
     font-weight: bold;
 }
 
 /* Wrapper for the table to allow scrolling on smaller screens if needed */
 .app-usage-table-wrapper {
     width: 100%;
-    overflow-x: auto; /* Add horizontal scroll if table is too wide */
+    overflow-x: auto;
 }
 
 /* Table styling */
 .app-usage-table {
     width: 100%;
-    border-collapse: collapse; /* Remove gaps between cells */
+    border-collapse: collapse;
     margin-top: 10px;
-    background-color: #1e1e1e; /* Dark background for the table */
+    background-color: #1e1e1e;
     color: white;
-    border-radius: 6px; /* Optional: round corners for the table itself */
-    overflow: hidden; /* Ensures border-radius clips content */
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .app-usage-table th,
 .app-usage-table td {
-    border: 1px solid #444; /* Darker borders for cells */
+    border: 1px solid #444;
     padding: 12px 15px; /* Padding inside cells */
     text-align: left;
     font-size: 14px;
 }
 
 .app-usage-table th {
-    background-color: #4CAF50; /* Green accent for headers, like in your example */
-    /* Or a more muted dark theme header: background-color: #2a2a2a; */
+    background-color: #4CAF50;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
@@ -90,26 +72,22 @@ body {
 
 /* Zebra-striping for table rows for better readability */
 .app-usage-table tbody tr:nth-of-type(even) {
-    background-color: #2c2c2c; /* Slightly lighter than table background for even rows */
+    background-color: #2c2c2c;
 }
 
 .app-usage-table tbody tr:hover {
-    background-color: #3a3a3a; /* Highlight row on hover */
-    /* transform: scale(1.01); Optional: slight scale effect, can be jerky with tables */
+    background-color: #3a3a3a;
     transition: background-color 0.2s ease-in-out;
 }
 
-/* Optional: Style for specific columns if needed */
-.app-usage-table td:nth-child(1), /* User ID */
-.app-usage-table td:nth-child(2) { /* Device ID */
-    /* color: #a0a0a0; /* Slightly muted for IDs */
+.app-usage-table td:nth-child(1), 
+.app-usage-table td:nth-child(2) { 
 }
 
-.app-usage-table td:nth-child(3) { /* App Name */
+.app-usage-table td:nth-child(3) {
     font-weight: 500;
 }
 
-.app-usage-table td:last-child { /* Usage Duration */
+.app-usage-table td:last-child {
     font-weight: bold;
-    /* color: #4CAF50; /* Optional: Highlight duration */
 }

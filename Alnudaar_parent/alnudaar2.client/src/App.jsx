@@ -7,8 +7,8 @@ import AppUsageReport from "./AppUsageReport";
 import ScreenTimeSchedules from "./ScreenTimeSchedule";
 import RegisterDevice from "./RegisterDevice";
 import ManageDevices from "./ManageDevices";
-import BlockRules from "./BlockRules"; // Import the new BlockRules page
-import "./App.css"; // Add CSS for animations
+import BlockRules from "./BlockRules";
+import "./App.css";
 
 function Navbar() {
     const { auth, logout } = useAuth();
@@ -146,7 +146,7 @@ function App() {
     const { auth } = useAuth();
     const features = [
         { id: 1, name: "Screen Time Schedules", route: "/schedules" },
-        { id: 2, name: "Website & App Blocking", route: "/block-rules" }, // Add BlockRules to features
+        { id: 2, name: "Website & App Blocking", route: "/block-rules" },
         { id: 3, name: "App Usage Report", route: "/appusagereport" },
     ];
 

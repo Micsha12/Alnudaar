@@ -1,6 +1,6 @@
 using Alnudaar2.Server.Models;
 using Microsoft.EntityFrameworkCore;
-using Alnudaar2.Server.Data; // Add this line
+using Alnudaar2.Server.Data;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
