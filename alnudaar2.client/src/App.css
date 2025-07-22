@@ -1,11 +1,132 @@
-﻿#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+﻿body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: white;
 }
 
-th, td {
-    padding-left: 1rem;
-    padding-right: 1rem;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-left h1 {
+    margin: 0;
+    font-size: medium   ;
+}
+
+.navbar-left ul,
+.navbar-right ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-left ul li,
+.navbar-right ul li {
+    margin: 0 10px;
+}
+
+.navbar-left ul li a,
+.navbar-right ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-left ul li a:hover,
+.navbar-right ul li a:hover {
+    text-decoration: underline;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;   /* Try 2rem or adjust as needed */
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.main-content {
+    padding: 80px 20px 20px; /* Add padding to avoid content being hidden behind the navbar */
+}
+
+/* Features Container */
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between boxes */
+    justify-content: center;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+/* Feature Box */
+.feature-box {
+    width: 250px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1e1e1e;
+    border: 1px solid #555;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effect */
+.feature-box:hover {
+    transform: scale(1.05); /* Slightly enlarge the box */
+    background-color: #333;
+}
+
+/* Dropdown and Button Styling */
+.feature-box select {
+    width: 90%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #444;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+.feature-box select:focus {
+    border-color: #4CAF50;
+}
+
+.feature-box button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 90%;
+}
+
+.feature-box button:hover {
+    background-color: #45a049;
 }

@@ -4,7 +4,7 @@ namespace Alnudaar2.Server.Models
     {
         public int ScreenTimeScheduleID { get; set; }
         public int UserID { get; set; }
-        public int DeviceID { get; set; }
+        public int? DeviceID { get; set; }
         public string? StartTime { get; set; }
         public string? EndTime { get; set; }
         public string? DayOfWeek { get; set; }

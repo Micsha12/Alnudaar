@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Add this import
+import './Register.css';
 
 function Register() {
     const [user, setUser] = useState({
@@ -13,26 +15,31 @@ function Register() {
         setUser({ ...user, [name]: value });
     };
 
+    const [error, setError] = useState('');
+    const navigate = useNavigate(); // Add this line
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
         const response = await fetch('https://localhost:7200/api/users/register', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(user)
         });
+
         if (response.ok) {
-            // Handle successful registration (e.g., redirect to login page)
-            console.log('User registered successfully');
+            // Registration successful, redirect to login page
+            navigate('/login');
         } else {
-            console.error('Failed to register user');
+            const errorMsg = await response.text();
+            setError(errorMsg || 'Registration failed.');
         }
     };
 
     return (
-        <div>
+        <div className="register-container">
             <h1>Register</h1>
+            {error && <div className="register-error">{error}</div>}
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Username:</label>
